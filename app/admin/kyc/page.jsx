@@ -56,7 +56,7 @@ const GeneralTraffic = () => {
           </tr>
         </thead>
         <tbody>
-          {unVerifiedUsers.map((user, i) => (
+          {unVerifiedUsers?.map((user, i) => (
             <tr key={user.id}>
               <td>{i + 1}</td>
               <td>{user.fullName}</td>

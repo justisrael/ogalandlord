@@ -11,12 +11,9 @@ const DataDispatch = ({data}) => {
   const allListings = useAppSelector(selectAllListings)
 
     useEffect(() => {
-        if (!allListings.length){
-          if(data.length > 0){
-            dispatch(setAllListings(data))
-          }
-        }
-      }, [data, dispatch, allListings.length])
+      dispatch(setAllListings(data))
+   
+      }, [data, dispatch])
   return (
     <></>
   )

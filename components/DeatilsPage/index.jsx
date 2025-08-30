@@ -13,12 +13,11 @@ const DetailsPage = ({ listing, slug }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const thumbnailContainerRef = useRef();
-  const filteredListings = useAppSelector(selectFilteredListings)
+  const filteredListings = useAppSelector(selectFilteredListings);
 
   const [mainImage, setMainImage] = useState(0);
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [showContact, setShowContact] = useState(0);
-  
 
   const currentUser = useAppSelector(selectCurrentUser);
 
@@ -100,7 +99,7 @@ const DetailsPage = ({ listing, slug }) => {
 
   const handleMouseEnterThumbnail = (url, index) => {
     setMainImage(url);
-    setMainImageIndex(index)
+    setMainImageIndex(index);
   };
 
   const modifyString = (str) => {
@@ -108,18 +107,18 @@ const DetailsPage = ({ listing, slug }) => {
     const prefix = "234"; // Define the prefix
     const result = prefix.concat(firstCharRemoved); // Concatenate the prefix with the remaining string
     return result; // Return the final result
-};
-
-//href={`whatsapp://send?text=Hi,%20I%20will%20like%20to%20get%20more%20information%20on%20this%20property%20you%20listed%20on%20OgaLandLord%20https://ogalandlord.vercel.app/listings/property/${listing.slug}&phone=${modifyString(listing.contact.phone)}`} className="whatsapp-btn">WhatsApp
-
-  const getFirstSixElements = (arr) => {
-    console.log(arr)
-    const data = arr
-    data.length > 6 ? data.slice(0, 6) : data
   };
 
-  const filterBySlug = (arr, slug) => slug? arr.filter(item => item.slug !== slug) : arr
+  //href={`whatsapp://send?text=Hi,%20I%20will%20like%20to%20get%20more%20information%20on%20this%20property%20you%20listed%20on%20OgaLandLord%20https://ogalandlord.vercel.app/listings/property/${listing.slug}&phone=${modifyString(listing.contact.phone)}`} className="whatsapp-btn">WhatsApp
 
+  const getFirstSixElements = (arr) => {
+    console.log(arr);
+    const data = arr;
+    data.length > 6 ? data.slice(0, 6) : data;
+  };
+
+  const filterBySlug = (arr, slug) =>
+    slug ? arr.filter((item) => item.slug !== slug) : arr;
 
   return (
     <div className="b-property-page">
@@ -173,7 +172,9 @@ const DetailsPage = ({ listing, slug }) => {
             {listing.images.map((image, index) => (
               <div
                 key={index}
-                className={`thumbnail ${index === mainImageIndex ? "active" : ""}`}
+                className={`thumbnail ${
+                  index === mainImageIndex ? "active" : ""
+                }`}
                 style={{
                   backgroundImage: `url(${image.url})`,
                   backgroundSize: "cover",
@@ -203,7 +204,8 @@ const DetailsPage = ({ listing, slug }) => {
         <div className="details">
           <p className="price">
             <b style={{ fontSize: "42px" }}>₦</b>
-            {formatPrice(listing.details.price)} <span>{listing.details.paymentType}</span>{" "}
+            {formatPrice(listing.details.price)}{" "}
+            <span>{listing.details.paymentType}</span>{" "}
           </p>
           {/* <div className="specifics">
                 <span>
@@ -229,6 +231,17 @@ const DetailsPage = ({ listing, slug }) => {
             {renderListItems(listing.details.amenities)}
           </ul>
         </div>
+
+        <div className="video-cont">
+          {listing.video && (
+            <>
+              <video controls>
+                <source src={listing.video.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </>
+          )}
+        </div>
       </div>
       <div className="contact">
         <div className="contact-cont">
@@ -245,48 +258,68 @@ const DetailsPage = ({ listing, slug }) => {
                     width: "60px",
                     height: "60px",
                     overflow: "hidden",
-                    aspectRatio: "1/1"
+                    aspectRatio: "1/1",
                     // display: "flex",
                     // justifyContent: "center",
                     // alignItems: "center"
                   }}
                 />
                 <div className="text">
-                    <p  >{listing.contact.name}</p>
+                  <p>{listing.contact.name}</p>
 
-                    <a href="#" className="view-more">
-                        View more properties from Israel ventures
-                    </a>
+                  <a href="#" className="view-more">
+                    View more properties from Israel ventures
+                  </a>
                 </div>
               </div>
 
               {/* <h3>Israel Ventures</h3> */}
             </div>
             <div className="agent-contact">
-              {
-                showContact? <button className="phone-btn" onClick={() => setShowContact(prev => !prev)}  >{listing.contact.phone}</button> : <button className="phone-btn" onClick={() => setShowContact(prev => !prev)} >+234xxxxxxxxxx (show)</button>
-              }
-              
-              <a target="_blank" href={`whatsapp://send?text=Hi&phone=${modifyString(listing.contact.phone)}`} className="whatsapp-btn">WhatsApp</a>
+              {showContact ? (
+                <button
+                  className="phone-btn"
+                  onClick={() => setShowContact((prev) => !prev)}
+                >
+                  {listing.contact.phone}
+                </button>
+              ) : (
+                <button
+                  className="phone-btn"
+                  onClick={() => setShowContact((prev) => !prev)}
+                >
+                  +234xxxxxxxxxx (show)
+                </button>
+              )}
+
+              <a
+                target="_blank"
+                href={`whatsapp://send?text=Hi&phone=${modifyString(
+                  listing.contact.phone
+                )}`}
+                className="whatsapp-btn"
+              >
+                WhatsApp
+              </a>
             </div>
           </div>
 
           <div className="safety-tips-card">
             <h4>Safety Tips</h4>
             <ul>
-              <li>1. 
-                Do not pay an inspection fee without seeing the House owner and
-                property.
+              <li>
+                1. Do not pay an inspection fee without seeing the House owner
+                and property.
               </li>
-              <li>2.
-                Pay any fee or any upfront payment after you verify from the
+              <li>
+                2. Pay any fee or any upfront payment after you verify from the
                 Landlord.
               </li>
               <li>3. Ensure you meet the House owner in an open location.</li>
-              <li>4.
-                The House owner does not represent Oga Landlord and Oga Landlord is
-                not liable for any monetary transaction between you and the
-                House owner.
+              <li>
+                4. The House owner does not represent Oga Landlord and Oga
+                Landlord is not liable for any monetary transaction between you
+                and the House owner.
               </li>
               <li>5. Make payment only when you are satisfied.</li>
             </ul>
@@ -294,9 +327,16 @@ const DetailsPage = ({ listing, slug }) => {
         </div>
         {/* <h1>CONTACT</h1> */}
       </div>
-      <div className="other-listings" style={{marginTop: "70px", fontSize: "20px"}} >
+      <div
+        className="other-listings"
+        style={{ marginTop: "70px", fontSize: "20px" }}
+      >
         <h4>Other Available Listings</h4>
-        <BuyersListingContainer listings={filteredListings.filter(item => item.slug !== slug).slice(0, 6) } />
+        <BuyersListingContainer
+          listings={filteredListings
+            .filter((item) => item.slug !== slug)
+            .slice(0, 6)}
+        />
       </div>
     </div>
   );

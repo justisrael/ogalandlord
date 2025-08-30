@@ -1,5 +1,6 @@
 export { default as Overlay } from './overlay'
 export { default as DashboardTopNav } from './DashboardTopNav'
+export { default as PaymentSuccess } from './paymentCheck'
 export { default as SideNav } from './SideNav'
 export { default as SideNavAdmin } from './SideNavAdmin'
 export { default as ListingsStats } from './ListingsStats'
@@ -8,6 +9,8 @@ export { default as ListingsDashboardAdmin } from './ListingsDashboardAdmin'
 export { default as AddressInput } from './AddressInput'
 export { default as DescriptionInput } from './DescriptionInput'
 export { default as ImageInput } from './ImageInput'
+export { default as VideoInput } from './VideoInput'
+export { default as VideoInputEdit } from './VideoInput copy'
 export { default as SellersListingContainer } from './SellersListingContainer'
 export { default as BuyersListingContainer } from './BuyersListingContainer'
 export { default as SPropertyCard } from './SPropertyCard'
@@ -23,3 +26,4 @@ export { default as DetailsPage } from './DeatilsPage'
 export {default as Navbar} from "./Navbar";
 export {default as Footer} from "./Footer";
 export {default as DataComponent} from "./Data";
+export {default as TransactionTable} from "./TransactionsTable";

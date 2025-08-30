@@ -212,6 +212,17 @@ const SpropertyPage = ({ listing }) => {
           {renderListItems(listing.details.amenities)}
         </ul>
       </div>
+      <div className="video-cont" >
+          {
+            listing.video && 
+            <>
+              <video controls>
+                <source src={listing.video.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </>
+          }
+      </div>
     </div>
   );
 };

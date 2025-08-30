@@ -59,17 +59,17 @@ const DescriptionInput = () => {
 
             <div className="radio-buttons">
                 <label>
-                    <input  onChange={handleInputChange}  type="radio"  checked={furnished === 'furnished'}  name="furnished" value={true} />
+                    <input  onChange={handleInputChange}  type="radio"  checked={furnished === 'furnished'}  name="furnished" value={'furnished'} />
                     <span className="custom-radio"></span>
                     Fully Furnished
                 </label>
                 <label>
-                    <input  onChange={handleInputChange}  type="radio"  checked={furnished === 'partlyFurnished'} name="furnished" value={false} />
+                    <input  onChange={handleInputChange}  type="radio"  checked={furnished === 'partlyFurnished'} name="furnished" value={'partlyFurnished'} />
                     <span className="custom-radio"></span>
                     Partly Furnished
                 </label>
                 <label>
-                    <input  onChange={handleInputChange}  type="radio"  checked={furnished === 'notFurnished'} name="furnished" value={false} />
+                    <input  onChange={handleInputChange}  type="radio"  checked={furnished === 'notFurnished'} name="furnished" value={'notFurnished'} />
                     <span className="custom-radio"></span>
                     No Furnishing
                 </label>

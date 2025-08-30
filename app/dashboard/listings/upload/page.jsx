@@ -2,11 +2,12 @@
 
 
 import React, { useEffect } from 'react';
-import { AddressInput, DescriptionInput, ImageInput } from '@/components';
+import { AddressInput, DescriptionInput, ImageInput, VideoInput } from '@/components';
 import  { useAppDispatch, useAppSelector } from '@/lib/store/hooks'
-import { selectLocation, selectDetails, selectImages, selectUploadMsg, uploadListings , setUploadMsg, selectPrimaryImage } from '@/lib/store/slices/listingUpload.reducer';
+import { selectLocation, selectDetails, selectImages, selectUploadMsg, uploadListings , setUploadMsg, selectPrimaryImage, selectVideos, selectVideoLoading, selectLoading } from '@/lib/store/slices/listingUpload.reducer';
 import { selectCurrentUser } from '@/lib/store/slices/user.reducer';
 import { ToastContainer, toast } from "react-toastify";
+// import VideoInput from '@/components/VideoInput';
 
 
 const Upload = () => {
@@ -21,10 +22,18 @@ const Upload = () => {
   const currentUser = useAppSelector(selectCurrentUser)
   const uploadMsg = useAppSelector(selectUploadMsg)
   const primaryImage = useAppSelector(selectPrimaryImage);
+  const video = useAppSelector(selectVideos);
+  const videoLoading = useAppSelector(selectVideoLoading);
+  const loading = useAppSelector(selectLoading);
 
 
   const handleSubmit = () => {
     // Check if the address, state, and LGA are not empty
+
+    if(loading || videoLoading) {  
+      toast.error("Please wait until the upload is completed.");
+      return false;
+    }
     if(!images.length) {
         toast.error("Please upload at least one image.");
         return false;
@@ -137,14 +146,16 @@ const Upload = () => {
             url: currentUser.photoURL
         }, 
         primaryImage,
-        stage: "review",
+        stage: "inactive",
         uploadDate: new Date(),
         updatedPrice: [
             {
                 price: price,
                 date: new Date(),
             }
-        ]
+        ],
+        subscription: null,
+        video
     }
 
     // console.log(listing)
@@ -176,6 +187,7 @@ useEffect(() => {
 
         </div>
         <div className="uploads-cont">
+            <VideoInput />
             <ImageInput />
             <AddressInput />
             <DescriptionInput />

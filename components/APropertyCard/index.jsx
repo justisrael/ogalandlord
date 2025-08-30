@@ -151,10 +151,10 @@ const SPropertyCard = ({listing}) => {
 
           <p>Added {formatDate(listing.uploadDate)}</p>
         </div>
-        <div className="admin-btns">
+        {/* <div className="admin-btns">
           <button className="view"  onClick={() => navigate(`/admin/listings?listing=${listing.id}`)} >View</button>
           <button className="verify" onClick={() => verifyListing(listing)} >Verify</button>
-        </div>
+        </div> */}
       </div>
      
     </div>

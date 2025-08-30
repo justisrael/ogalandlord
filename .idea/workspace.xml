@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e6193465-35b3-4182-88f9-bb827b47144f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/components/DescriptionInput/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/DescriptionInput/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-04T12_54_42_707Z-debug-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-04T12_54_47_451Z-debug-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-05T09_35_25_058Z-debug-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-05T09_35_34_119Z-debug-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-05T18_04_19_103Z-debug-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-05T18_04_23_736Z-debug-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-05T19_45_31_128Z-debug-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-05T19_45_35_509Z-debug-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tivesmynameAppDataRoamingnpm-cache/_logs/2024-10-06T11_53_35_175Z-debug-0.log" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2zXdZDDvu8GpcphPQujemtods8n" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/tives/Documents/projects/react/ogalandlord",
+    "settings.editor.selected.configurable": "preferences.keymap"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6193465-35b3-4182-88f9-bb827b47144f" name="Changes" comment="" />
+      <created>1751881404449</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1751881404449</updated>
+    </task>
+    <servers />
+  </component>
+</project>

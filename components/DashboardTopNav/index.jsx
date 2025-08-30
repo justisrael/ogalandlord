@@ -11,15 +11,15 @@ import React from 'react'
 const TopNav = () => {
     const currentUser = useAppSelector(selectCurrentUser)
 
-    const { photoURL, fullName } = currentUser;
+    // const { photoURL, fullName } = currentUser;
   return (
     <div className='user-profile-button' >
-        { photoURL? <div className='user-img' style={{
-          backgroundImage: `url(${photoURL.url})`,
+        { currentUser?.photoURL? <div className='user-img' style={{
+          backgroundImage: `url(${currentUser?.photoURL.url})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}  alt="" /> : <span className='user-img-span' >{fullName[0]}</span> }
-        <span className='user-name' >{currentUser.fullName}</span>
+        <span className='user-name' >{currentUser?.fullName}</span>
     </div>
   )
 }

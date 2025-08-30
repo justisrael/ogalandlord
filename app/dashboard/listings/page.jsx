@@ -12,7 +12,7 @@ import { ListingsDashboard, SpropertyPage } from '@/components';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Listings = () => {
-  const query = useSearchParams()
+  const query = useSearchParams();
   const router = useRouter()
   const dispatch = useAppDispatch();
 
@@ -23,6 +23,16 @@ const Listings = () => {
 
 
   const uploadedListings = useAppSelector(selectUploadedListings);
+
+  const activeListings = React.useMemo(
+    () => uploadedListings.filter(listing => listing.stage === "active"),
+    [uploadedListings]
+  );
+
+  const inActiveListings = React.useMemo(
+    () => uploadedListings.filter(listing => !listing.stage === "active"),
+    [uploadedListings]
+  );
 
   const listingId = query.get("listing");
 
@@ -37,8 +47,8 @@ const Listings = () => {
   }, [listing, router])
 
   useEffect(() => {
-
-  }, [])
+    console.log(activeListings)
+  }, [activeListings])
 
   
   useEffect(() => {

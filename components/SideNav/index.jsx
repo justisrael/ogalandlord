@@ -25,9 +25,9 @@ const SideNav = () => {
 
   return (
     <div className="sidebar">
-      {/* <div className="logo">
+      <div className="logo">
         <img src="/logo.svg" alt="Logo" />
-      </div> */}
+      </div>
       <ul className="menu">
         <li className="menu-item" onMouseEnter={() => handleToggle(setIsDashboardActive, true)} onMouseLeave={() => handleToggle(setIsDashboardActive, false)}  >
           <a href="/dashboard" className="menu-link"> <img src={ isDashboardActive? '/dashboard-w.svg' : `/dashboard.svg`}/>  Home</a>
@@ -37,6 +37,9 @@ const SideNav = () => {
         </li>
         <li className="menu-item" onMouseEnter={() => handleToggle(setIsProfileActive, true)} onMouseLeave={() => handleToggle(setIsProfileActive, false)}   >
           <a href="/dashboard/profile" className="menu-link"> <img src={ isProfileActive?  "/profile-w.svg" : "/profile.svg"} />  Profile</a>
+        </li>
+        <li className="menu-item" onMouseEnter={() => handleToggle(setIsProfileActive, true)} onMouseLeave={() => handleToggle(setIsProfileActive, false)}   >
+          <a href="/dashboard/transactions" className="menu-link"> <img src={ isProfileActive?  "/profile-w.svg" : "/profile.svg"} />  Transactions</a>
         </li>
         {/* <li className="menu-item" onMouseEnter={() => handleToggle(setIsProfileActive, true)} onMouseLeave={() => handleToggle(setIsProfileActive, false)}   >
           <a href="/dashboard/profile" className="menu-link"> <img src={ isProfileActive?  "/profile-w.svg" : "/profile.svg"} />  Payments</a>

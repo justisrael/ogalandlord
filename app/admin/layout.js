@@ -12,7 +12,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AuthWrapper>
 
     <div className={` dashboard ${inter.className}`}>
       <div className="top-nav" >
@@ -29,6 +28,5 @@ export default function RootLayout({ children }) {
       </div>
           
     </div>
-    </AuthWrapper>
   );
 }

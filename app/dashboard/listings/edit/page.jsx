@@ -2,7 +2,7 @@
 
 
 import React, { useEffect } from 'react';
-import { AddressInputEdit, DescriptionInputEdit, ImageInputEdit } from '@/components';
+import { AddressInputEdit, DescriptionInputEdit, ImageInputEdit, VideoInputEdit } from '@/components';
 import  { useAppDispatch, useAppSelector } from '@/lib/store/hooks'
 import { 
     selectLocation, 
@@ -14,7 +14,8 @@ import {
     selectPrimaryImage,
     selectUpdatedPrice ,
     selectStage,
-    selectUploadDate
+    selectUploadDate,
+    selectVideos
 } from '@/lib/store/slices/listingEdit.reducer';
 import { selectCurrentUser } from '@/lib/store/slices/user.reducer';
 import { ToastContainer, toast } from "react-toastify";
@@ -40,6 +41,8 @@ const Upload = () => {
   const stage = useAppSelector(selectStage);
   const uploadDate = useAppSelector(selectUploadDate);
   const listingId = query.get("listing");
+  const video = useAppSelector(selectVideos);
+  
 
 
 
@@ -172,10 +175,11 @@ const Upload = () => {
         stage: stage,
         uploadDate,
         id: listingId,
-        updatedPrice: checkAndUpdatePrice(updatedPrice, price)
+        updatedPrice: checkAndUpdatePrice(updatedPrice, price),
+        video
     }
 
-    // console.log(listing)
+    console.log("EDITINGGGGG",listing)
 
     dispatch(editListings(listing));
     
@@ -209,6 +213,7 @@ useEffect(()=> {
 
         </div>
         <div className="uploads-cont">
+            <VideoInputEdit />
             <ImageInputEdit />
             <AddressInputEdit />
             <DescriptionInputEdit />

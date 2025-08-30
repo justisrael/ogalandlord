@@ -4,7 +4,7 @@
 import React, {useState} from 'react';
 import { SellersListingContainer } from '..';
 
-const Listings = ({listings, home}) => {
+const Listings = ({listings, home, stage = "active"}) => {
 
 
     const [sort, setSort] = useState('Rent');
@@ -13,7 +13,7 @@ const Listings = ({listings, home}) => {
       <div className="l-header">
         <div className="header">
           <div className="intro">
-            <h4>My Listings</h4>
+            <h4>{stage === "active"? 'My' : "Unpaid"} Listings</h4>
             <span>Your Property Informations</span>
           </div>
 
@@ -110,7 +110,7 @@ const Listings = ({listings, home}) => {
       </div>
       <div className="l-container">
         {listings?.length > 0 ? (
-          <SellersListingContainer listings={listings} />
+          <SellersListingContainer stage={stage} listings={listings} />
         ) : (
           <div className="no-listings">
             <img src="/no-listings.svg" alt="" />

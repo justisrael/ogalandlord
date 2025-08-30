@@ -267,7 +267,7 @@ const EditProfile = () => {
           </div>
         </label>
         <label htmlFor="NIN" className="">
-          <span>National Identification Number (NIN)</span>
+          <span>*National Identification Number (NIN)</span>
           <div className="file-input">
            { !NINUpload?.name && <input onChange={handleNinUpload} type="file" id="NIN"  />}
            { NINUpload?.name && <p>{NINUpload?.name}</p>}
