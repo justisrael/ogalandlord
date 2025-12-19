@@ -31,7 +31,8 @@ const Dashboard = () => {
     const listingInStage = uploadedListings?.filter(
       (listing) => listing.stage === stage
     );
-    return listingInStage.length;
+    console.log(listingInStage);
+    return listingInStage?.length;
   };
 
   const getListingStats = () => {
