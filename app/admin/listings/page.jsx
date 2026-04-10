@@ -3,13 +3,11 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import { selectUploadedListings, fetchUploadedListings } from '@/lib/store/slices/listingUpload.reducer';
-import { fetchUnverifiedListings, selectUnverfiedListings } from '@/lib/store/slices/admin.reducer';
+import { fetchUnverifiedListings, selectUnverfiedListings, selectCurrentAdmin, hasRole } from '@/lib/store/slices/admin.reducer';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { selectCurrentUser } from '@/lib/store/slices/user.reducer';
 
-
-
-import { ListingsDashboardAdmin, ApropertyPage } from '@/components';
+import { ListingsDashboardAdmin, ApropertyPage, AccessDenied } from '@/components';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Listings = () => {
@@ -17,7 +15,12 @@ const Listings = () => {
   const router = useRouter()
   const dispatch = useAppDispatch();
 
+  const currentAdmin = useAppSelector(selectCurrentAdmin);
   const currentUser = useAppSelector(selectCurrentUser);
+
+  if (currentAdmin && !hasRole(currentAdmin, "listings")) {
+    return <AccessDenied requiredRole="listings" />;
+  }
 
 
   const { fullName, email, contactEmail, id } = currentUser;

@@ -12,9 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Upload = () => {
 
-
     const dispatch = useAppDispatch();
-
 
   const details = useAppSelector(selectDetails)
   const location = useAppSelector(selectLocation)
@@ -26,8 +24,10 @@ const Upload = () => {
   const videoLoading = useAppSelector(selectVideoLoading);
   const loading = useAppSelector(selectLoading);
 
+  const isVerified = currentUser?.verified === true;
 
   const handleSubmit = () => {
+    if (!isVerified) return;
     // Check if the address, state, and LGA are not empty
 
     if(loading || videoLoading) {  
@@ -182,9 +182,16 @@ useEffect(() => {
 
   return (
     <div className='upload' >
+        {!isVerified && (
+          <div className="upload-unverified-banner">
+            <img src="/lock.svg" alt="" onError={(e) => e.target.style.display = "none"} />
+            <span>
+              Your account is not yet verified. Complete your KYC to upload listings.
+            </span>
+          </div>
+        )}
         <div className="header">
             <h4>Upload a listing for Sale/Rent</h4>
-
         </div>
         <div className="uploads-cont">
             <VideoInput />
@@ -192,7 +199,14 @@ useEffect(() => {
             <AddressInput />
             <DescriptionInput />
             <div className="btn-cont">
-              <button onClick={handleSubmit} className='primary-btn' >Finish</button>
+              <button
+                onClick={handleSubmit}
+                className='primary-btn'
+                disabled={!isVerified}
+                style={!isVerified ? { opacity: 0.45, cursor: "not-allowed" } : {}}
+              >
+                Finish
+              </button>
             </div>
         </div>
       <ToastContainer />

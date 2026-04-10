@@ -5,10 +5,16 @@ import { TransactionTable } from "@/components";
 import { useAppSelector, useAppDispatch } from "@/lib/store/hooks";
 import { transactionsSliceSelectors, fetchUserTransactions } from "@/lib/store/slices/transactions.reducer";
 import { selectCurrentUser } from "@/lib/store/slices/user.reducer";
-import { selectAllTransactions, fetchTransactions } from "@/lib/store/slices/admin.reducer";
+import { selectAllTransactions, fetchTransactions, selectCurrentAdmin, hasRole } from "@/lib/store/slices/admin.reducer";
+import { AccessDenied } from "@/components";
 
 const TransactionHistoryPage = () => {
+  const currentAdmin = useAppSelector(selectCurrentAdmin);
   const transactions = useAppSelector(selectAllTransactions);
+
+  if (currentAdmin && !hasRole(currentAdmin, "payments")) {
+    return <AccessDenied requiredRole="payments" />;
+  }
   const isLoading = useAppSelector(
     transactionsSliceSelectors.selectTransactionsLoading
   );

@@ -1,27 +1,39 @@
 "use client"
-import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
+import React from 'react';
+import { useAppSelector } from '@/lib/store/hooks';
 import { selectCurrentUser } from '@/lib/store/slices/user.reducer';
-
-
-
-
-import React from 'react'
-
+import { selectCurrentAdmin } from '@/lib/store/slices/admin.reducer';
+import { usePathname } from 'next/navigation';
 
 const TopNav = () => {
-    const currentUser = useAppSelector(selectCurrentUser)
+  const pathname = usePathname();
+  const currentUser = useAppSelector(selectCurrentUser);
+  const currentAdmin = useAppSelector(selectCurrentAdmin);
 
-    // const { photoURL, fullName } = currentUser;
+  const isAdminRoute = pathname?.startsWith('/admin');
+  const person = isAdminRoute ? currentAdmin : currentUser;
+
+  if (!person) return <div className="user-profile-button" />;
+
   return (
-    <div className='user-profile-button' >
-        { currentUser?.photoURL? <div className='user-img' style={{
-          backgroundImage: `url(${currentUser?.photoURL.url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}  alt="" /> : <span className='user-img-span' >{fullName[0]}</span> }
-        <span className='user-name' >{currentUser?.fullName}</span>
+    <div className="user-profile-button">
+      {person.photoURL ? (
+        <div
+          className="user-img"
+          style={{
+            backgroundImage: `url(${person.photoURL.url ?? person.photoURL})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      ) : (
+        <span className="user-img-span">
+          {person.fullName?.[0]?.toUpperCase() ?? "A"}
+        </span>
+      )}
+      <span className="user-name">{person.fullName}</span>
     </div>
-  )
-}
+  );
+};
 
-export default TopNav
+export default TopNav;

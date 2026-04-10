@@ -27,3 +27,4 @@ export {default as Navbar} from "./Navbar";
 export {default as Footer} from "./Footer";
 export {default as DataComponent} from "./Data";
 export {default as TransactionTable} from "./TransactionsTable";
+export {default as AccessDenied} from "./AccessDenied";

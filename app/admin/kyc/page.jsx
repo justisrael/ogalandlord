@@ -2,10 +2,17 @@
 
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
-import { adminEditUsers, fetchUnverifiedUsers, selectUnverfiedUsers } from '@/lib/store/slices/admin.reducer';
+import { adminEditUsers, fetchUnverifiedUsers, selectUnverfiedUsers, selectCurrentAdmin, hasRole } from '@/lib/store/slices/admin.reducer';
+import { AccessDenied } from '@/components';
 
 
 const GeneralTraffic = () => {
+  const currentAdmin = useAppSelector(selectCurrentAdmin);
+
+  if (currentAdmin && !hasRole(currentAdmin, "kyc")) {
+    return <AccessDenied requiredRole="kyc" />;
+  }
+
   const listings = [
     { id: 1, owner: 'Eduviere Israel', city: 'Ikeja' },
     { id: 2, owner: 'Eduviere Israel', city: 'Ikeja' },

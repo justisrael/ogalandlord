@@ -329,15 +329,13 @@ export const Signup = () => {
     confirmPassword: "",
     fullName: "",
     phoneNumber: "",
-    userRole: ""
-
+    userRole: "seller",
   }
 
   const [userDetails, setUserDetails] = useState(defaultDetails);
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordC, setShowPasswordC] = useState(false);
   const [errBorder, setErrBorder] = useState(false);
-  const [userRoleG, setUserRoleG] = useState(null);
 
 
   const userError = useAppSelector(selectUserError)
@@ -378,12 +376,6 @@ export const Signup = () => {
     
     const { email, password, confirmPassword, fullName, userRole, phoneNumber } = userDetails;
 
-    if(!userRole) {
-      dispatch(setUserError('Select a role'))
-      setErrBorder(true)
-      return;
-    }
-    
     const newUser = {
 
       fullName: fullName,
@@ -454,13 +446,8 @@ export const Signup = () => {
   },[errBorder, dispatch, userError])
 
   const handleGoogleSignUp = () => {
-    if(!userRoleG){
-      toast.error('Please select a user role')
-      return
-    }
-
     const newUser = {
-      userRole: userRoleG,
+      userRole: "seller",
       authMethod: "google",
       bussinessCert: {},
       NIN: {},
@@ -502,20 +489,6 @@ export const Signup = () => {
           <input required onChange={handleInputChange} type="tel" name='phoneNumber' id="phone" placeholder="your phone number" />
         </div>
 
-        <span style={{alignSelf: "flex-start", marginBottom: "12px", marginTop: "10px"}} >Select a role</span>
-        <div className="radio-buttons">
-          <label>
-            <input   onChange={handleInputChange} type="radio" name="userRole" value="seller" />
-            <span className="custom-radio"></span>
-            Seller
-          </label>
-          <label>
-            <input   onChange={handleInputChange} type="radio" name="userRole" value="buyer" />
-            <span className="custom-radio"></span>
-            Buyer
-          </label>
-        </div>
-
         <div className="input-group">
           <label htmlFor="password">Password</label>
           <div className="pwd-group">
@@ -548,20 +521,6 @@ export const Signup = () => {
       <div className="or">
         <span>Or</span>
       </div>
-
-      <div className="radio-buttons r-b-google">
-          <label>
-            <input onChange={(e) => setUserRoleG(e.target.value)} type="radio" name="role" value="seller" />
-            <span className="custom-radio"></span>
-            Seller
-          </label>
-          <label>
-            <input onChange={(e) => setUserRoleG(e.target.value)} type="radio" name="role" value="buyer" />
-            <span className="custom-radio"></span>
-            Buyer
-          </label>
-        </div>
-
 
       <button onClick={handleGoogleSignUp} className="google-login-btn">
         <img src="google-logo.svg" alt="Google Logo" />
